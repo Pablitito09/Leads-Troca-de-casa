@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisabete Gaspar | Zome Pr1me | Avaliação Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            --bg-color: #fdf5f5; 
+            --surface: #ffffff;
+            --surface-glass: rgba(255, 255, 255, 0.7);
+            --primary: #c5a8a8; 
+            --primary-dark: #a88b8b;
+            --text-main: #2d3748; 
+            --text-darker: #1a202c; 
+            --text-muted: #718096;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-soft: 0 10px 40px -10px rgba(197, 168, 168, 0.3);
+            --shadow-hover: 0 20px 40px -10px rgba(197, 168, 168, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* --- ANIMAÇÕES DE SCROLL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-height: 75vh; 
+            display: flex;
+            align-items: center;
+            padding: 100px 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--text-darker) 100%);
+            border-bottom-right-radius: 280px;
+            box-shadow: 0 20px 50px rgba(45, 55, 72, 0.15);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--surface);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--surface);
+            margin-bottom: 24px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--primary);
+            color: var(--surface);
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(197, 168, 168, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--surface);
+            color: var(--text-main);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: pulse 6s infinite alternate;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 200px 200px 20px 20px;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        /* --- SECÇÃO: O PADRÃO DE EXCELÊNCIA --- */
+        .pillars {
+            padding: 80px 0 100px;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+            border: 1px solid rgba(197, 168, 168, 0.1);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(197, 168, 168, 0.3);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(197, 168, 168, 0.15);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary);
+            color: var(--surface);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FORMULÁRIO PREMIUM --- */
+        .form-section {
+            padding: 60px 0 120px;
+            background-color: var(--bg-color);
+        }
+
+        .form-container {
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-left: 4px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(197, 168, 168, 0.3);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            background: var(--surface);
+            color: var(--text-main);
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            appearance: none;
+        }
+        
+        select.input-field {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(197, 168, 168, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--text-main);
+            color: var(--surface);
+            border: none;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(45, 55, 72, 0.15);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--text-darker);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(45, 55, 72, 0.25);
+        }
+
+        /* --- PÁGINA DE OBRIGADO (SPA) --- */
+        #thank-you-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--text-darker) 100%);
+            color: var(--surface);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .ty-icon {
+            font-size: 80px;
+            color: var(--primary);
+            margin-bottom: 24px;
+            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .ty-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .ty-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--text-darker);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                border-bottom-right-radius: 100px;
+                min-height: auto;
+                padding: 80px 0 60px;
+            }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-image-wrapper { margin-top: 20px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="site-content">
+        <header class="hero">
+            <div class="container">
+                <div class="hero-text reveal">
+                    <div class="badge">Zome Pr1me</div>
+                    <h1>Descubra o <span>real valor</span> do seu imóvel.</h1>
+                    <p>Sou a Elisabete Gaspar. Com uma análise baseada em dados reais e um profundo conhecimento da região, ajudo a definir o melhor valor para uma venda rápida, segura e sem complicações.</p>
+                    <a href="#avaliacao" class="btn-primary">
+                        Pedir Avaliação Gratuita <i class="ph-bold ph-arrow-down"></i>
+                    </a>
+                </div>
+                <div class="hero-image-wrapper reveal delay-2">
+                    <img src="8cc4c3ff-9ada-4b74-9d6c-f3b7f2f1faff.jpg" alt="Elisabete Gaspar" class="hero-image">
+                </div>
+            </div>
+        </header>
+
+        <section class="pillars">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">O Padrão de Excelência</h2>
+                    <p class="section-subtitle">Um serviço desenhado ao detalhe para que tome as melhores decisões, com total tranquilidade.</p>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="card reveal">
+                        <div class="card-icon"><i class="ph-fill ph-star"></i></div>
+                        <h3>Experiência Zome</h3>
+                        <p>Expertise de mercado acumulada para garantir decisões assertivas na hora de vender.</p>
+                    </div>
+                    <div class="card reveal delay-1">
+                        <div class="card-icon"><i class="ph-fill ph-handshake"></i></div>
+                        <h3>Transparência Total</h3>
+                        <p>Feedback constante e clareza em todas as etapas de negociação do seu imóvel.</p>
+                    </div>
+                    <div class="card reveal delay-2">
+                        <div class="card-icon"><i class="ph-fill ph-megaphone"></i></div>
+                        <h3>Marketing Estratégico</h3>
+                        <p>O seu imóvel posicionado em destaque nos canais certos para atrair o comprador ideal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="avaliacao" class="form-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Vamos conversar?</h2>
+                    <p class="section-subtitle">Preencha o formulário abaixo para alinhar os seus objetivos e encontrar a melhor estratégia de mercado.</p>
+                </div>
+
+                <div class="form-container reveal delay-1">
+                    <form id="lead-form" onsubmit="submitToGoogleSheets(event)">
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="nome">Nome Completo (Full name)</label>
+                                <input type="text" id="nome" name="nome" class="input-field" placeholder="O seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" class="input-field" placeholder="O seu e-mail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone (Phone number)</label>
+                                <input type="tel" id="telefone" name="telefone" class="input-field" placeholder="O seu contacto" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="credito_aprovado">Tenho crédito habitação aprovado</label>
+                                <select id="credito_aprovado" name="credito_aprovado" class="input-field" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="necessita_credito">Necessito recorrer a Crédito Habitação</label>
+                                <select id="necessita_credito" name="necessita_credito" class="input-field" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vender_casa">Preciso vender a minha casa atual ou outra</label>
+                                <select id="vender_casa" name="vender_casa" class="input-field" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="capitais_proprios">Possuo capitais próprios</label>
+                                <select id="capitais_proprios" name="capitais_proprios" class="input-field" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="btn-submit">
+                            Enviar Pedido <i class="ph-bold ph-paper-plane-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps" style="padding: 0 0 100px 0; background-color: var(--bg-color);">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">O que acontece a seguir?</h2>
+                </div>
+                
+                <div class="grid-3" style="margin-top: 60px;">
+                    <div class="card reveal" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 24px;"><i class="ph-fill ph-phone-call"></i></div>
+                        <h3>1. Diagnóstico Inicial</h3>
+                        <p>Entrarei em contacto consigo rapidamente para entender os seus objetivos e alinhar expetativas.</p>
+                    </div>
+                    <div class="card reveal delay-1" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 24px;"><i class="ph-fill ph-map-pin"></i></div>
+                        <h3>2. Visita Técnica</h3>
+                        <p>Realizamos uma visita ao local para analisar ao detalhe as características e o estado do imóvel.</p>
+                    </div>
+                    <div class="card reveal delay-2" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 24px;"><i class="ph-fill ph-presentation-chart"></i></div>
+                        <h3>3. Plano de Ação</h3>
+                        <p>Apresento-lhe o estudo de mercado e a estratégia de venda personalizada, sem compromisso.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Elisabete Gaspar | Consultora Imobiliária Zome Pr1me.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="thank-you-page">
+        <i class="ph-fill ph-check-circle ty-icon"></i>
+        <h1 class="ty-title">Obrigado pela sua confiança!</h1>
+        <p class="ty-text">O seu pedido foi recebido com sucesso. Iremos contactá-lo muito em breve para agendarmos a nossa conversa e darmos o próximo passo.</p>
+        <button onclick="voltarAoSite()" class="btn-primary">
+            <i class="ph-bold ph-arrow-left"></i> Voltar à página inicial
+        </button>
+    </div>
+
+    <script>
+        // Animações de Scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('active'); }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+
+        // Envio do formulário para o Excel
+        function submitToGoogleSheets(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('lead-form');
+            const formData = new FormData(form);
+
+            // O seu Link do Google Apps Script
+            const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwF-6cUCujVux4C1IFRDO6CohuHB0xK4Cxjmup7pju5m7OGrTuCvXvBv2IxPBXJibBd4w/exec'; 
+
+            // 1. AÇÃO IMEDIATA (Sem espera): Esconde o site e mostra o Obrigado
+            document.getElementById('site-content').style.display = 'none';
+            document.getElementById('thank-you-page').style.display = 'flex';
+            window.scrollTo(0, 0);
+
+            // 2. DISPARAR E ESQUECER: Envia os dados silenciosamente em background
+            fetch(googleScriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                // Quando terminar de enviar invisivelmente, limpa os campos
+                form.reset(); 
+            }).catch(error => {
+                console.error('Erro no envio em background:', error);
+            });
+        }
+
+        // Função para voltar ao site a partir da página de obrigado
+        function voltarAoSite() {
+            document.getElementById('thank-you-page').style.display = 'none';
+            document.getElementById('site-content').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
